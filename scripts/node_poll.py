@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # Created for SC2
 # Add a line in boot.sh saying:
-# nc.traditional -l -p 4444 localhost -e /root/radio-api/node_poll.py
+# nc.traditional -l -p 4444 localhost -e /root/radio-api/node_poll.py &
 # Relies on nc.traditional being installed
 
 import sys
