@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Created for SC2
 # Add a line in boot.sh saying:
 # nc.traditional -ul -p 441 localhost -e /root/radio-api/node_poll.py &
