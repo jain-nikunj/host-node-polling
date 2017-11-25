@@ -1,7 +1,6 @@
-#!/usr/bin/python
 # Created for SC2
 # Add a line in boot.sh saying:
-# nc.traditional -l -p 4444 localhost -e /root/radio-api/node_poll.py &
+# nc.traditional -ul -p 441 localhost -e /root/radio-api/node_poll.py &
 # Relies on nc.traditional being installed
 
 import sys
@@ -43,8 +42,9 @@ def check_and_respond(count, tap_name):
   line = sys.stdin.readline()
   if line and line.rstrip() == "?":
     count += 1
-    received, transmitted = get_tap_stats(tap_name)
-    sys.stdout.write(received + ' ' + transmitted + '\n')
+    #received, transmitted = get_tap_stats(tap_name)
+    #sys.stdout.write(received + ' ' + transmitted + '\n')
+    sys.stdout.write(str(count) + '\n')
     sys.stdout.flush()
 
   return count
