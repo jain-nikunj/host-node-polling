@@ -43,9 +43,8 @@ def check_and_respond(count, tap_name):
   line = sys.stdin.readline()
   if line and line.rstrip() == "?":
     count += 1
-    #received, transmitted = get_tap_stats(tap_name)
-    #sys.stdout.write(received + ' ' + transmitted + '\n')
-    sys.stdout.write(str(count) + '\n')
+    received, transmitted = get_tap_stats(tap_name)
+    sys.stdout.write(received + ' ' + transmitted + '\n')
     sys.stdout.flush()
 
   return count
