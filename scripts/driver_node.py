@@ -2,6 +2,7 @@
 import sys, os
 import time
 import subprocess
+from subprocess import check_output
 
 def get_routing_table():
     '''
@@ -18,7 +19,7 @@ def get_routing_table():
 
     for routing_line in routing_lines:
         parts = routing_line.split(' ')
-        parts.remove('')
+        parts = [part for part in parts if part != '']
 
         # Get the components based on the fixed format
         destination, gateway, genmask, flags, metric, ref, use, iface = parts[:8]
@@ -66,7 +67,7 @@ def get_my_srn_number():
     used for communication using IP addresses.
     '''
 
-    shell_command = "(ifconfig tr0 | grep inet | head -n 1 | awk '{print $2}' | cut -d '.' -f 4)"
+    shell_command = "(ifconfig tr0 | grep inet | head -n 1 | awk '{print $2}' | cut -d '.' -f 3)"
     return check_output(shell_command, shell=True).decode().replace('\n', '')
 
 def main():
