@@ -10,14 +10,14 @@ def main():
 
     port_num = '441'
 
-    cmd = 'nc.traditional -ul -p {} -e /root/radio-api/node_poll.py'.format(
+    cmd = 'nc.traditional -ul -p {} -e /root/radio_api/node_poll.py'.format(
             port_num)
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 
     while True:
         if time.time() - last_update_time > update_time_period:
             p.kill()
-            cmd = 'nc.traditional -ul -p {} -e /root/radio-api/node_poll.py'.format(
+            cmd = 'nc.traditional -ul -p {} -e /root/radio_api/node_poll.py'.format(
                     port_num)
             p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             last_update_time = time.time()
