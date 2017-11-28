@@ -10,7 +10,7 @@ import time
 def get_tap_stats(tap_name):
   '''
   Function which reads /proc/net/dev and expects a line
-  with statistics for tap. Returns two numbers: Bytes received and transmitted
+  with statistics for tap. Returns two numbers: Packets received and transmitted
   from tap by parsing based on a special predefined linux format.
   '''
   with open('/proc/net/dev', 'r') as inFile:
@@ -31,7 +31,7 @@ def get_tap_stats(tap_name):
     faces[face.lstrip().rstrip()] = faceData
 
   tap = faces[tap_name]
-  return tap['recv_bytes'], tap['trans_bytes']
+  return tap['recv_packets'], tap['trans_packets']
 
 def check_and_respond(count, tap_name):
   '''
