@@ -6,7 +6,7 @@ from subprocess import check_output
 
 def main():
     last_update_time = 0
-    update_time_period = 1
+    update_time_period = 2
 
     port_num = '441'
 
@@ -21,6 +21,8 @@ def main():
                     port_num)
             p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             last_update_time = time.time()
+
+        time.sleep(update_time_period / 2)
 
 if __name__ == '__main__':
     main()
